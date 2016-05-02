@@ -1,6 +1,9 @@
 import os
 import re
-from urlparse import urlparse, urlunparse
+try:
+    from urlparse import urlparse, urlunparse
+except ImportError:
+    from urllib.parse import urlparse, urlunparse
 from datetime import datetime
 
 from django.conf import settings

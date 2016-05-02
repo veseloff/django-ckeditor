@@ -4,9 +4,13 @@ from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
-from django.utils.encoding import force_unicode
+try:
+    from django.utils.encoding import force_unicode
+except ImportError:
+    def force_unicode(s, *args, **kwargs):
+        return s
 from django.core.exceptions import ImproperlyConfigured
-from django.forms.util import flatatt
+from django.forms.utils import flatatt
 import json
 
 

@@ -21,6 +21,10 @@ class RichTextField(models.TextField):
 class RichTextFormField(forms.fields.Field):
     def __init__(self, config_name='default', *args, **kwargs):
         kwargs.update({'widget': CKEditorWidget(config_name=config_name)})
+        try:
+            del kwargs['max_length']
+        except:
+            pass
         super(RichTextFormField, self).__init__(*args, **kwargs)
 
 try:

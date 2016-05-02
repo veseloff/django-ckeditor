@@ -1,7 +1,8 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
-urlpatterns = patterns(
-    '',
-    url(r'^upload/', 'ckeditor.views.upload', name='ckeditor_upload'),
-    url(r'^browse/', 'ckeditor.views.browse', name='ckeditor_browse'),
-)
+from .views import upload, browse
+
+urlpatterns = [
+    url(r'^upload/', upload, name='ckeditor_upload'),
+    url(r'^browse/', browse, name='ckeditor_browse'),
+]
